@@ -2,17 +2,9 @@
 building a java app to manage car rentals
 https://grok.com/share/bGVnYWN5_e0538beb-e901-4da1-91a0-2010f42254fe
 
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL,
-    name VARCHAR(100) NOT NULL
-);
+INSERT INTO users (username, password, name) VALUES ('testuser', 'testpass', 'Test User')
+ON CONFLICT (username) DO NOTHING;  -- Avoid duplicates
 
-CREATE TABLE cars (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    model VARCHAR(50),
-    year INTEGER,
-    description TEXT
-);
+INSERT INTO cars (name, model, year, description) VALUES 
+('Toyota Camry', 'LE', 2023, 'A reliable sedan with good fuel efficiency.'),
+('Ford Mustang', 'GT', 2024, 'High-performance sports car with powerful engine.');
